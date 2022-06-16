@@ -36,8 +36,8 @@ const CountriesContainers = () => {
         .then(countries => setCountries(countries));
       
     }
-    const addFavourite = (newFavourite) => {
-       const listCopy = [...countries, newFavourite]
+    const addFavourite = () => {
+       const listCopy = [...favouriteCountries, selectedCountry]
        setFavouriteCountries(listCopy);
 
     }
@@ -46,10 +46,11 @@ const CountriesContainers = () => {
         <div>
             
             <CountryList favouriteCountries={favouriteCountries}/>
-            <CountryForm addFavourite={addFavourite}/>
+            {/* <CountryForm addFavourite={addFavourite}/> */}
         <p>Total Population: {totalPopulation}</p>
         <DropDown countries={countries} onCountriesSelect={onCountriesSelect}/>
-        {selectedCountry ? <Country country={selectedCountry}/> : null}
+        {selectedCountry ? <Country country={selectedCountry} addFavouriteCountry={addFavourite}/> : null}
+        
         </div>
     );
 
